@@ -15,15 +15,16 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
+#env:
   # Use docker.io for Docker Hub if empty
-  REGISTRY: ghcr.io
+ #REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+ # IMAGE_NAME: ${{ github.repository }}
 
 
 jobs:
-  build:
+ #build:
+ build-and-push-image:
 
     runs-on: ubuntu-latest
     permissions:
