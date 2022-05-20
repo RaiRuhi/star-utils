@@ -11,7 +11,7 @@ on:
   push:
     branches: [ main ]
     # Publish semver tags as releases.
-    tags: [ v*.*.*]
+   # tags: [ v*.*.*]
   pull_request:
     branches: [ main ]
 
@@ -22,6 +22,8 @@ env:
   # github.repository as <account>/<repo>
  IMAGE_NAME: 
       ${{ github.repository }}
+      
+ IMAGE_TAG: V1
    
 
 jobs:
@@ -75,8 +77,8 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: |
-              ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-              docker.io/ruhir/star-utils
+              ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$IMAGE_TAG
+              docker.io/ruhir/star-utils:$IMAGE_TAG
           tag-custom: latest    
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
